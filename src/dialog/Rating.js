@@ -35,7 +35,7 @@ export default ({ show, onClose, name,rate }) => {
           <h1>{name}</h1>
           <b>{rate}</b>
           <div>
-            {[1,2,3,4,5].map((number) => <button>{number}</button>
+            {[1,2,3,4,5].map((number) => <button>{number}</button>)}
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ export default ({ restaurant }) => (
       {restaurant.restaurant}
     </h1>
     <div>
-      {restaurant.foods.map(food => <Food food={food}>)}
+      {restaurant.foods.map(food => <Food food={food}/>)}
     </div>
   </div>
 )

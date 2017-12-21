@@ -8,7 +8,7 @@ class Food extends Component {
     this.state = {
       isOpen: false
     }
-    this.rateMeal = this.rate.bind(this)
+
   }
   rateMeal () {
     this.setState({ isOpen: !this.state.isOpen })
@@ -16,14 +16,14 @@ class Food extends Component {
   render() {
     const { food } = this.props
     return (
-      <div onClick={rating.bind(this)}>
+      <div onClick={this.rateMeal.bind(this)}>
         <li>
           <a>{food.price + " "}</a>
           <a>{food.name + " "}</a>
           <a>{food.rating}</a>
           <Rating
             show={this.state.isOpen}
-            onClose={() => rateMeal()}
+            onClose={() => this.rateMeal.bind(this)}
             name={food.name}
             rate={food.rating}
           />
