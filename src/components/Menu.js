@@ -1,30 +1,14 @@
-import React,{Component} from 'react';
+import React from 'react'
 
 import Food from './Food'
-const Menu=({restaurant})=>{
 
-    const foods = () => {
-        return (
-            <div>
-                {restaurant.foods.map((food, i) => {
-                    return (
-                        <Food food={food}/>
-                    )
-                })
-                }
-            </div>
-        )
-    }
-
-
-    return (
-        <div>
-            <h1>
-                {restaurant.restaurant}
-            </h1>
-                {foods()}
-        </div>
-    )
-}
-
-export default Menu
+export default ({ restaurant }) => (
+  <div>
+    <h1>
+      {restaurant.restaurant}
+    </h1>
+    <div>
+      {restaurant.foods.map(food => <Food food={food}>)}
+    </div>
+  </div>
+)
