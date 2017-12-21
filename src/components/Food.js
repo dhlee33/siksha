@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 
 import Rating from '../dialog/Rating';
 
-class Menu extends Component {
+class Food extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -33,4 +33,4 @@ class Menu extends Component {
   }
 }
 
-export default Menu
+export default Food
