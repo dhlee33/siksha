@@ -1,11 +1,29 @@
 import React from 'react';
+import Menu from '../components/Menu'
 
-const Bookmakrs = () =>{
+const Bookmarks = ({time,data,bookmark}) =>{
+
+    function loadMenu() {
+        return(
+            <div>
+                {data.map((menu,i)=>{
+                    return(
+                        !bookmark[i]?
+                            (<div>
+                            <Menu restaurant ={menu} index={i}/>
+                        </div>):null
+                    )
+
+                })}
+            </div>
+
+        )
+    }
     return(
         <div>
-            즐겨찾기
+            {time}
+            {loadMenu()}
         </div>
     )
 }
-
-export default Bookmakrs;
+export default Bookmarks;

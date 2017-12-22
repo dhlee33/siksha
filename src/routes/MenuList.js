@@ -9,7 +9,7 @@ const MenuList = ({time,data}) =>{
                     {data.map((menu,i)=>{
                         return(
                             <div>
-                                <Menu restaurant ={menu}/>
+                                <Menu restaurant ={menu} index={i}/>
                             </div>
                         )
 
