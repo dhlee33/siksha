@@ -48,9 +48,10 @@ export const getMenuFailure = () => ({
   type: GET_MENU_FAILURE
 })
 
-export const rateRequest = (body) => ({
+export const rateRequest = (rating,meal) => ({
   type: RATE_REQUEST,
-  body
+  rating,
+  meal
 })
 
 export const rateSuccess = () => ({

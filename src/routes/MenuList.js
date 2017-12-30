@@ -9,7 +9,7 @@ const MenuList = ({time,data}) =>{
                     {data.map((menu,i)=>{
                         return(
                             <div>
-                                <Menu restaurant ={menu} key={i} index={i}/>
+                                <Menu key={i} restaurant ={menu}  index={i}/>
                             </div>
                         )
 
@@ -20,7 +20,7 @@ const MenuList = ({time,data}) =>{
         }
     return(
         <div>
-            {time}
+          <h1 align="center">{time}</h1>
             {loadMenu()}
         </div>
     )

@@ -1,14 +1,27 @@
 .container{
     margin: 10px;
+    text-align: center;
+
+}
+
+.restaurant{
+    padding:5px;
+    margin:20px auto;
+    background-color: #ffb100;
+    width:600px;
+    border-radius:10px
+}
+.name{
+    margin: 0 auto;
 }
 .food {
-    background: white;
-    width:50%;
+    background: #ffd100;
     border-radius: 10px;
     padding:10px;
+    text-align: left;
 }
 
 .food:hover{
-    background: #ffbd00;
+    background: #ff7700;
     cursor: pointer;
 }

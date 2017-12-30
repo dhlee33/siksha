@@ -33,8 +33,9 @@ class Menu extends Component {
     render(){
         return(
             this.state.open?
-            <div>
-                <h1 className="container">
+            <div className="container">
+              <div className="restaurant">
+                <h1 className="name">
                   <button onClick={this.handleOpen}>-</button>
                     <a>{" "+this.props.restaurant.restaurant+" "}</a>
                     <button onClick={this.marking}>
@@ -42,15 +43,17 @@ class Menu extends Component {
                     </button>
                 </h1>
                 <div>
-                    {this.props.restaurant.foods.map((food,i) =>
+                  {this.props.restaurant.foods.length != 0?
+                    this.props.restaurant.foods.map((food,i) =>
                         <Food food={food}
                               key={i}
                               restaurant={this.props.restaurant.restaurant}
-                        marked ={this.props.bookmark[this.props.index]}/>)}
+                        marked ={this.props.bookmark[this.props.index]}/>):<b>식단이 없습니다.</b>}
                 </div>
-            </div>:
-                <div>
-                    <h1 className="container">
+            </div></div>:
+                <div className="container">
+                  <div className="restaurant">
+                    <h1 className="name">
                       <button onClick={this.handleOpen}>+</button>
                       <a>{" "+this.props.restaurant.restaurant+" "}</a>
                         <button onClick={this.marking}>
@@ -58,6 +61,7 @@ class Menu extends Component {
                         </button>
                     </h1>
                 </div>
+              </div>
         )
     }
 

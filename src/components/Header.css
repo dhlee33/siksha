@@ -3,16 +3,18 @@
     display:table;
     table-layout: fixed;
     width: 100%;
+    border-radius: 10px;
 }
 
 .item{
+    font-weight: bold;
     text-align:center;
     padding-top: 1rem;
     padding-bottom:1rem;
     display:table-cell;
     color: white;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 }
 
 .item:hover{

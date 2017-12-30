@@ -7,7 +7,6 @@ class Rating extends Component {
   // Render nothing if the "show" prop is false
   constructor(props){
     super(props)
-    this.rating = this.rating.bind(this)
   }
   // The gray background
   backdropStyle = {
@@ -21,27 +20,17 @@ class Rating extends Component {
   // The modal "window"
 
   modalStyle = {
-    backgroundColor: '#ffbd00',
+    backgroundColor:  '#ffd100',
     borderRadius: 10,
-    maxWidth: 300,
-    minHeight: 150,
     color: 'black',
     padding: 30
   };
 
-  initialBody = {
+  meal = {
     key: 'siksha1996',
     meal: this.props.name,
     restaurant: this.props.restaurant,
     rating: 0
-  }
-
-  rating = (num)=>{
-    var body ={
-      ...this.initialBody,
-      rating:num
-    }
-    this.props.rate(body)
   }
 
   render() {
@@ -56,10 +45,10 @@ class Rating extends Component {
             </button>
             <h1>{this.props.name}</h1>
             <b>평점 </b>
-            <b>{this.props.rate}</b>
+            <h2>{this.props.rate}</h2>
             <div>
               <b>평점 주기 </b>
-              {[1, 2, 3, 4, 5].map((number) => <button onClick={this.rating(number)}>{number}</button>)}
+              <div>{[1, 2, 3, 4, 5].map((number) => <button onClick={()=>{this.props.rating(number,this.meal)}}>{number}</button>)}</div>
             </div>
           </div>
         </div>
@@ -71,7 +60,7 @@ class Rating extends Component {
 
 const mapDispatchToProps = (dispatch)=>{
   return{
-    rate:(body)=>{dispatch(actions.rateRequest(body))}
+    rating:(body)=>{dispatch(actions.rateRequest(body))}
   }
 }
 

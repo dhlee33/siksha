@@ -18,9 +18,9 @@ class Food extends Component {
     return (
       <div className="container">
         <li className="food" onClick={this.rateMeal.bind(this)}>
-          <a>{food.price + " "}</a>
-          <a>{food.name + " "}</a>
-          <a>{parsedRate}</a>
+          <b>{food.name + " "}</b>
+            <a>{food.price + "원 "}</a>
+          <a>{"평점: "+parsedRate}</a>
         </li>
           <Rating
               show={this.state.isOpen}

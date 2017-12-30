@@ -16,9 +16,9 @@ const createAPI = (customURL, headers, config = { httpMethods: [] }) => {
   return api;
 };
 
-const api = createAPI(null, { 'Content-Type': 'application/json' });
 
+const api = createAPI(null, {  'Accept': 'application/json','Content-Type':'application/x-www-form-urlencoded' });
 export default {
   getMenu: () => api.get('/rate/view?date=today'),
-  rate:(body)=>api.post('/rate',body)
+  rate: (rating, meal) => api.post('/rate', {...meal,'rating':rating})
 };

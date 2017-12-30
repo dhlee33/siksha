@@ -22,9 +22,18 @@ export function* watchRateRequest() {
 }
 
 export function* rateRequest(action) {
-  const response = yield call(api.rate(action.body))
+  const response = yield call(api.rate,action.rating,action.meal)
   if (response.ok) {
-    yield put(rateSuccess());
+    const menuResponse = yield call(api.getMenu)
+    if(menuResponse.ok) {
+      yield put(getMenuSuccess(menuResponse.data));
+      yield put(rateSuccess());
+    }
+    else{
+      yield put(getMenuFailure());
+      yield put(rateFailure());
+    }
+
   } else {
     yield put(rateFailure());
   }
