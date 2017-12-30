@@ -22,14 +22,14 @@ const initialState ={
     ]
 }
 
-export default function mark(state=initialState,action){
+export default (state=initialState,action)=>{
     switch(action.type){
         case BOOKMARK:
             return{
                 ...state,
                 bookmark:state.bookmark.map((mark,i)=>{
                     return(
-                        i==action.index ? !mark : mark
+                        i===action.index ? !mark : mark
                     )
                 })
             }

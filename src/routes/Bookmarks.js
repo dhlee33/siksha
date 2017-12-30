@@ -10,7 +10,7 @@ const Bookmarks = ({time,data,bookmark}) =>{
                     return(
                         !bookmark[i]?
                             (<div>
-                            <Menu restaurant ={menu} index={i}/>
+                            <Menu restaurant ={menu} key={i} index={i}/>
                         </div>):null
                     )
 

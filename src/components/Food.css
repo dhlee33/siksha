@@ -1,0 +1,14 @@
+.container{
+    margin: 10px;
+}
+.food {
+    background: white;
+    width:50%;
+    border-radius: 10px;
+    padding:10px;
+}
+
+.food:hover{
+    background: #ffbd00;
+    cursor: pointer;
+}

@@ -103,7 +103,7 @@ export default function menu(state=initialState,action){
 
 function Deep(arr,index) {
         return(arr.map((data,i)=> {
-            i == index ? null : data
+            i === index ? null : data
         }))
 }
 export function rate(state=initialState,action){

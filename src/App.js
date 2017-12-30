@@ -9,27 +9,39 @@ import *as actions from './actions'
 
 
 class App extends Component{
+  constructor(props){
+    super(props)
+  }
+
     render() {
         return(
+          this.props.menuList!=null ?
             <Router>
                 <div>
                     <Header/>
                     <Switch>
                         <Route path ="/bookmarks"
-                               render={()=><Bookmarks time = {this.props.time}
-                                                      data = {this.props.data}
+                               render={()=><Bookmarks time = {this.props.menuList.time}
+                                                      data = {this.props.menuList.data}
                                                       bookmark={this.props.bookmark}/>}/>
                         <Route exact path ="/"
-                               render={()=><MenuList time = {this.props.time}
-                                                     data = {this.props.data}/>}/>
+                               render={()=><MenuList time = {this.props.menuList.time}
+                                                     data = {this.props.menuList.data}/>}/>
                         <Route path ="/options" component = {Options}/>
                     </Switch>
                 </div>
             </Router>
-        )}
+        :
+            <Router>
+            <div>
+              <Header/>
+              <a> 식단을 불러오는 중 입니다...</a>
+            </div>
+            </Router>)}
+
         componentWillMount(){
             const Data = localStorage.Data;
-
+          this.props.getMenu()
             if(Data){
                 this.props.localBookmark(JSON.parse(Data))
             }
@@ -39,16 +51,15 @@ class App extends Component{
 
 const mapStateToProps = (state)=>{
     return{
-        time:state.menu.time,
-        data:state.menu.data,
-        bookmark:state.mark.bookmark
+        menuList:state.menuList.menu,
+      bookmark:state.mark.bookmark
     }
 }
 
 const mapDispatchToProps = (dispatch)=>{
     return{
-        menu:()=>{dispatch(actions.menu())},
-        localBookmark:(data)=>(dispatch(actions.localBookmark(data)))
+        localBookmark:(data)=>(dispatch(actions.localBookmark(data))),
+      getMenu:()=>(dispatch(actions.getMenuRequest()))
     }
 }
 

@@ -1,25 +1,27 @@
-import { RATE_REQUEST,RATE_SUCCESS,RATE_FAILURE} from "../actions";
+import { GET_MENU_FAILURE, GET_MENU_SUCCESS, GET_MENU_REQUEST } from "../actions";
 
 const initialState ={
+  menu: null,
   error: false,
   isFetching: false,
 }
 
 export default (state=initialState,action) => {
   switch(action.type){
-    case RATE_REQUEST:
+    case GET_MENU_REQUEST:
       return {
         ...state,
         isFetching: true,
         error: false
       }
-    case RATE_SUCCESS:
+    case GET_MENU_SUCCESS:
       return {
         ...state,
+        menu: action.menu,
         isFetching: false,
         error: false,
       }
-    case RATE_FAILURE:
+    case GET_MENU_FAILURE:
       return {
         ...state,
         isFetching: false,

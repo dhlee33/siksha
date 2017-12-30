@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import './Food.css'
 import Rating from '../dialog/Rating';
 
 class Food extends Component {
@@ -8,26 +8,27 @@ class Food extends Component {
     this.state = {
       isOpen: false
     }
-
   }
   rateMeal () {
     this.setState({ isOpen: !this.state.isOpen })
   }
   render() {
     const { food } = this.props
+    var parsedRate = parseFloat(food.rating).toFixed(1)
     return (
-      <div onClick={this.rateMeal.bind(this)}>
-        <li>
+      <div className="container">
+        <li className="food" onClick={this.rateMeal.bind(this)}>
           <a>{food.price + " "}</a>
           <a>{food.name + " "}</a>
-          <a>{food.rating}</a>
-          <Rating
-            show={this.state.isOpen}
-            onClose={() => this.rateMeal.bind(this)}
-            name={food.name}
-            rate={food.rating}
-          />
+          <a>{parsedRate}</a>
         </li>
+          <Rating
+              show={this.state.isOpen}
+              onClose={() => this.rateMeal.bind(this)}
+              name={food.name}
+              rate={parsedRate}
+              restaurant ={this.props.restaurant}
+          />
       </div>
     )
   }
