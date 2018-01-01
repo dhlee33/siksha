@@ -22,7 +22,7 @@ export function* watchRateRequest() {
 }
 
 export function* rateRequest(action) {
-  const response = yield call(api.rate,action.rating,action.meal)
+  const response = yield call(api.rate, action.rating, action.meal)
   if (response.ok) {
     const menuResponse = yield call(api.getMenu)
     if(menuResponse.ok) {
@@ -40,7 +40,7 @@ export function* rateRequest(action) {
 }
 export default function* rootSaga() {
   yield [
-    watchGetMenuRequest(),
-      watchRateRequest()
-    ]
+    fork(watchGetMenuRequest),
+    fork(watchRateRequest)
+  ]
 }
