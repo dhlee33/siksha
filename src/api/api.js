@@ -10,14 +10,14 @@ const createAPI = (customURL, headers, config = { httpMethods: [] }) => {
 
   httpMethods.forEach((method) => {
     api[method.toLowerCase()] = (endpoint, body, options) =>
-      request(` ${baseURL}${endpoint}`, { method, body, headers, ...options });
+      request(` ${baseURL}${endpoint}`, { method, body: JSON.stringify(body), headers, ...options });
   });
 
   return api;
 };
 
 
-const api = createAPI(null, {  'Accept': 'application/json','Content-Type':'application/x-www-form-urlencoded' });
+const api = createAPI(null, { 'Content-Type': 'application/json' });
 export default {
   getMenu: () => api.get('/rate/view?date=today'),
   rate: (rating, meal) => api.post('/rate', {...meal,'rating':rating})
